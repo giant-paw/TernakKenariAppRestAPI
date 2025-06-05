@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:materimei30/data/model/request/auth/register_request_model.dart';
 import 'package:meta/meta.dart';
 
 part 'register_event.dart';
