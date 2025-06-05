@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:http/http.dart';
 import 'package:materimei30/data/model/request/admin/induk_request_model.dart';
 import 'package:materimei30/data/model/response/get_all_induk_response.dart';
 import 'package:materimei30/service/service_http_client.dart';
