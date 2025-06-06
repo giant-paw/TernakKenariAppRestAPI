@@ -1,9 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:materimei30/core/components/components.dart';
 import 'package:materimei30/core/components/spaces.dart';
 import 'package:materimei30/core/constants/colors.dart';
 import 'package:materimei30/core/core.dart';
+import 'package:materimei30/data/model/request/auth/login_request_model.dart';
 import 'package:materimei30/presentation/auth/login/bloc/login_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -101,9 +103,46 @@ class _LoginScreenState extends State<LoginScreen> {
                       }
                     }
                   },
+
                   builder: (context, state) {
-                    return Container();
+                    return Button.filled(
+                      onPressed: state is LoginLoading
+                          ? null
+                          : () {
+                              if (_key.currentState!.validate()) {
+                                final request = LoginRequestModel(
+                                  email: emailController.text,
+                                  password: passwordController.text
+                                );
+                                context.read<LoginBloc>().add(
+                                  LoginRequested(requestModel: request),
+                                );
+                              }
+                          },
+                      label: state is LoginLoading ? 'memuat...' : 'Masuk',
+                    );
                   },
+                ),
+
+                const SpaceHeight(20),
+                Text.rich(
+                  TextSpan(
+                    text: "Belum punya akun?? Silahkan ",
+                    style: TextStyle(
+                      color: AppColors.grey,
+                      fontSize: MediaQuery.of(context).size.width * 0.03,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: 'Daftar Disini!!',
+                        style: TextStyle(color: AppColors.primary),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.push(const RegisterScreen());
+                          }
+                      )
+                    ]
+                  )
                 )
               ],
             ),
