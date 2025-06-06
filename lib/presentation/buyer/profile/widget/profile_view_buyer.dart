@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:materimei30/core/core.dart';
 import 'package:materimei30/data/model/response/buyer/buyer_profile_response_model.dart';
+import 'package:materimei30/presentation/buyer/home/buyer_home_screen.dart';
 
 class ProfileViewBuyer extends StatelessWidget {
   final Data profile;

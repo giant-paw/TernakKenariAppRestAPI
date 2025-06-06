@@ -4,14 +4,14 @@ import 'package:materimei30/presentation/buyer/profile/bloc/profile_buyer_bloc.d
 import 'package:materimei30/presentation/buyer/profile/widget/profile_view_buyer.dart';
 import 'package:materimei30/presentation/buyer/profile/widget/profile_widget_form.dart';
 
-class BuyerProfilePage extends StatefulWidget {
-  const BuyerProfilePage({super.key});
+class BuyerProfileScreen extends StatefulWidget {
+  const BuyerProfileScreen({super.key});
 
   @override
-  State<BuyerProfilePage> createState() => _BuyerProfilePageState();
+  State<BuyerProfileScreen> createState() => _BuyerProfileScreenState();
 }
 
-class _BuyerProfilePageState extends State<BuyerProfilePage> {
+class _BuyerProfileScreenState extends State<BuyerProfileScreen> {
   @override
   initState() {
     super.initState();

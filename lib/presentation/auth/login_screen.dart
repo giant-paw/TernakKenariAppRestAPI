@@ -8,6 +8,7 @@ import 'package:materimei30/core/core.dart';
 import 'package:materimei30/data/model/request/auth/login_request_model.dart';
 import 'package:materimei30/presentation/auth/bloc/login/login_bloc.dart';
 import 'package:materimei30/presentation/auth/register_screen.dart';
+import 'package:materimei30/presentation/buyer/profile/buyer_profile_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -102,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       if (role == 'admin') {
                         context.pushAndRemoveUntil(
-                          const AdminConfirmScreen(), 
+                          const RegisterScreen(), 
                           (route) => false
                         );
                       } else if (role == 'buyer') {
