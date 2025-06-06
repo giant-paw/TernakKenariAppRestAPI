@@ -6,7 +6,8 @@ import 'package:materimei30/core/components/spaces.dart';
 import 'package:materimei30/core/constants/colors.dart';
 import 'package:materimei30/core/core.dart';
 import 'package:materimei30/data/model/request/auth/login_request_model.dart';
-import 'package:materimei30/presentation/auth/login/bloc/login_bloc.dart';
+import 'package:materimei30/presentation/auth/bloc/login/login_bloc.dart';
+import 'package:materimei30/presentation/auth/register_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
