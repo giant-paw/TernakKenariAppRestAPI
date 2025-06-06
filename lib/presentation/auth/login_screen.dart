@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:materimei30/core/components/components.dart';
 import 'package:materimei30/core/components/spaces.dart';
+import 'package:materimei30/core/constants/colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -31,6 +33,39 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                     fontSize: MediaQuery.of(context).size.width * 0.05,
                     fontWeight: FontWeight.bold
+                  ),
+                ),
+                const SpaceHeight(30),
+                CustomTextField(
+                  validator: "Email tidak boleh kosong",
+                  controller: emailController, 
+                  label: 'Email', 
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.email),
+                  ),
+                ),
+
+                const SpaceHeight(25),
+                CustomTextField(
+                  validator: 'Password tidak boleh kosong',
+                  controller: passwordController,
+                  label: 'Password',
+                  obscureText: !isShowPassword,
+                  prefixIcon: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.lock),
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        isShowPassword = !isShowPassword;
+                      });
+                    },
+                    icon: Icon(
+                      isShowPassword ? Icons.visibility : Icons.visibility_off,
+                      color: AppColors.grey,
+                    ),
                   ),
                 ),
               ],
