@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:materimei30/core/components/components.dart';
 import 'package:materimei30/core/components/spaces.dart';
 import 'package:materimei30/core/constants/colors.dart';
+import 'package:materimei30/core/core.dart';
+import 'package:materimei30/presentation/auth/login/bloc/login_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -68,6 +71,40 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
+
+                const SpaceHeight(30),
+                BlocConsumer<LoginBloc, LoginState>(
+                  listener: (context, state) {
+                    if (state is LoginFailure) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error)));
+                    } else if (state is LoginSuccess) {
+                      final role = state.responseModel.user?.role
+                        ?.toLowerCase();
+
+                      if (role == 'admin') {
+                        context.pushAndRemoveUntil(
+                          const AdminConfirmScreen(), 
+                          (route) => false
+                        );
+                      } else if (role == 'buyer') {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(state.responseModel.message!)),
+                        );
+                        context.pushAndRemoveUntil(
+                          const BuyerProfileScreen(), 
+                          (route) => false
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Role tidak dikenali')),
+                        );
+                      }
+                    }
+                  },
+                  builder: (context, state) {
+                    return Container();
+                  },
+                )
               ],
             ),
           )
